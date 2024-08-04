@@ -1,0 +1,17 @@
+api:
+  dashboard: true  # Enables the dashboard accessible at http://your-ec2-instance-ip:8080
+  insecure: true
+
+log:
+  level: DEBUG  # Sets log level to DEBUG for detailed logs (adjust as needed for production)
+
+entryPoints:
+  web:
+    address: ":8081"  # Defines the entry point for HTTP traffic
+  dashboard:
+    address: ":8080"
+
+providers:
+  docker:
+    exposedByDefault: false  # Prevents all Docker services from being exposed unless explicitly enabled via labels
+    network: web  # Ensures Traefik only connects to containers on the 'web' network
